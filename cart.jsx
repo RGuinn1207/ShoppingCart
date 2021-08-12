@@ -12,14 +12,16 @@ const {
 const { Fragment, useState, useEffect, useReducer } = React;
 
 const Products = () => {
-
   const [items, setItems] = React.useState([]);
   const [cart, setCart] = React.useState([]);
   const [total, setTotal] = React.useState(0);
-  
   const [query, setQuery] = useState("http://localhost:1337/products");
-  
-  
+  const [{ data, isLoading, isError }, doFetch] = useDataApi(
+    "http://localhost:1337/products",
+    {
+      data: [],
+    });
+    
   useEffect(async () => {
     
     const rawData = await fetch(query);
@@ -112,15 +114,14 @@ const Products = () => {
   };
   // TODO: implement the restockProducts function
   const restockProducts = (url) => {
-    doFetch(url);
+  doFetch(url);
     let newItems = data.map((item) => {
       let { name, country, cost, instock } = item;
       return {name, country, cost, instock };
     });
-    setItems([...items, ...newItems]);
+    setItems([...newItems]);
 };
-  
-    
+
   return (
     <Container>
       <Row>
