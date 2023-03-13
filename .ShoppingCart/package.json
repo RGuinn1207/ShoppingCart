@@ -12,7 +12,7 @@
   "devDependencies": {},
   "dependencies": {
     "knex": "2.4.0",
-    "sqlite3": "5.0.3",
+    "sqlite3": "5.1.5",
     "strapi": "3.6.10",
     "strapi-admin": "3.6.6",
     "strapi-connector-bookshelf": "3.6.6",
